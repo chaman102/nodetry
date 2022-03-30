@@ -11,11 +11,11 @@ exports.getProduct =(req, res, next)=> {
     product.save();  
     res.redirect('/');
   }
-  exports.getHome = (req, res, next)=> {
+  exports.getHome = (req, res, next)=> {    
     const products =  Product.fetchAll();
     res.render('index', {
       title: "Home Page",
       products: products,
-      path: '/admin/shop'
+      path: ''
   });
   }
