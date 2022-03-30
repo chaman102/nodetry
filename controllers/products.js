@@ -7,15 +7,16 @@ exports.getProduct =(req, res, next)=> {
   }
 
   exports.postProduct =(req, res, next)=> {
-    const product = new Product(req.body.title);
+     const product = new Product(req.body.title);
     product.save();  
     res.redirect('/');
   }
-  exports.getHome = (req, res, next)=> {    
-    const products =  Product.fetchAll();
-    res.render('index', {
-      title: "Home Page",
-      products: products,
-      path: ''
-  });
-  }
+  exports.getHome = (req, res, next) => {
+    Product.fetchAll(products => {
+      res.render('index', {
+        title: "Home Page",
+        products: products,
+        path: ''
+      });
+    });
+  };
